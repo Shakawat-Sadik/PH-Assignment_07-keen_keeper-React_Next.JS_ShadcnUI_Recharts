@@ -15,8 +15,8 @@ const FriendPageComponent = ({ path }) => {
   const { id, name, picture, email, days_since_contact: days, status, tags, bio, goal, next_due_date: due } = num;
 
   return (
-    <Card className="max-w-screen max-h-fit grid grid-cols-32 grid-rows-7 py-5 md:py-10 lg:py-20 px-5 sm:px-10 md:px-25 lg:px-40">
-      <Card className="col-span-11 row-span-4 h-fit">
+    <Card className="max-w-screen grid grid-cols-32 grid-rows-7 py-5 md:py-10 lg:py-20 px-5 sm:px-10 md:px-25 lg:px-40">
+      <Card className="col-span-11 row-span-2">
         <div className="flex flex-col flex-1 items-center gap-3 p-6">
           <CardContent>
             <Image loading="eager" src={picture} alt={name} width={100} height={100} className="rounded-full aspect-square" />
@@ -42,30 +42,36 @@ const FriendPageComponent = ({ path }) => {
           </CardFooter>
         </div>
       </Card>
-      <Card className="col-span-7 row-span-2 text-center h-fit">
+      <Card className="col-span-7 row-span-1 text-center">
         <CardHeader>
           <CardTitle className="text-[#244D3F] text-3xl">{days < 10 && "0"}{days}</CardTitle>
         </CardHeader>
         <CardDescription>Days Since Contact</CardDescription>
       </Card>
-      <Card className="col-span-7 row-span-2 text-center h-fit">
+      <Card className="col-span-7 row-span-1 text-center">
         <CardHeader>
           <CardTitle className="text-[#244D3F] text-3xl">{goal < 10 && "0"}{goal}</CardTitle>
         </CardHeader>
         <CardDescription>Goal (Days)</CardDescription>
       </Card>
-      <Card className="col-span-7 row-span-2 text-center h-fit">
+      <Card className="col-span-7 row-span-1 text-center">
         <CardHeader>
           <CardTitle className="text-[#244D3F] text-3xl">{formatDate(due)}</CardTitle>
         </CardHeader>
         <CardDescription>Next Due</CardDescription>
       </Card>
-      <Card className="col-span-21 row-span-2">
-        <FriendCardStr number={"Three"} />
+      <Card className="col-span-21 row-span-1 p-3 md:p-6 items-between justify-center">
+        <div className="flex justify-between">
+          <h6 className="text-[#244D3F] text-xl">Relationship Goal</h6>
+          <Button id="edit" className="p-2">
+            <span>Edit</span>
+          </Button>
+        </div>
+        {document.getElementById("edit").addEventListener("click", )} <p className="opacity-80">Connect every<span className="font-bold">30 Days</span></p>
       </Card>
-      <div className="col-span-11 row-span-3 w-full h-fit">
+      <div className="col-span-11 row-span-3 w-full">
         
-          <div className="flex flex-col gap-2 w-full h-fit py-5">
+          <div className="flex flex-col gap-2 w-full py-5">
             <Button className="font-medium rounded-sm p-4">
               <span>Snooze 2 weeks</span>
             </Button>
