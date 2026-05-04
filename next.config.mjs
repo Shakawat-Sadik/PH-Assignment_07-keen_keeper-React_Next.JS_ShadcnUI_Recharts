@@ -2,6 +2,17 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+        port: "",
+        pathname: "/Shakawat-Sadik/PH-Assignment_07-Keen_Keeper_assets/main/**",
+        search: "",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

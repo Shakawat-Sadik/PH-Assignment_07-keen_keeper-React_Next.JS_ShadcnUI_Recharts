@@ -112,20 +112,20 @@ npx shadcn@latest add button input label textarea checkbox radio-group select sw
 │ CHECKBOX (Boolean Selection)                                │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  Unchecked:         Checked:          Indeterminate:       │
-│  ☐ Option          ☑ Option          ◻ Option            │
+│  Unchecked:         Checked:          Indeterminate:        │
+│  ☐ Option          ☑ Option          ◻ Option               │
 │                                                             │
 │  Multiple selection:                                        │
-│  ☐ Apple           ☑ Banana           ☑ Cherry            │
+│  ☐ Apple           ☑ Banana           ☑ Cherry              │
 │  ☐ Date                                                     │
 │                                                             │
 │  With Label:                                                │
-│  ☑ I agree to the terms and conditions                     │
+│  ☑ I agree to the terms and conditions                      │
 │                                                             │
 │  Disabled:                                                  │
-│  ☐ Option (disabled)    ☑ Option (disabled, checked)      │
+│  ☐ Option (disabled)    ☑ Option (disabled, checked)        │
 │                                                             │
-│  States: unchecked, checked, indeterminate, disabled       │
+│  States: unchecked, checked, indeterminate, disabled        │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -134,50 +134,50 @@ npx shadcn@latest add button input label textarea checkbox radio-group select sw
 │                                                             │
 │  Select one option:                                         │
 │                                                             │
-│  ● Option 1                                                │
-│  ○ Option 2                                                │
-│  ○ Option 3                                                │
-│  ○ Option 4 (disabled)                                     │
+│  ● Option 1                                                 │
+│  ○ Option 2                                                 │
+│  ○ Option 3                                                 │
+│  ○ Option 4 (disabled)                                      │
 │                                                             │
 │  Horizontal layout:                                         │
-│  ● Small  ○ Medium  ○ Large                                │
+│  ● Small  ○ Medium  ○ Large                                 │
 │                                                             │
 │  With descriptions:                                         │
-│  ● Free Plan                                               │
+│  ● Free Plan                                                │
 │    Limited to 5 projects                                    │
-│  ○ Pro Plan                                                │
+│  ○ Pro Plan                                                 │
 │    Unlimited projects                                       │
 │                                                             │
-│  States: selected, unselected, disabled, focus             │
+│  States: selected, unselected, disabled, focus              │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
 │ SELECT (Dropdown Option Selection)                          │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  Closed state:                     Open state:             │
+│  Closed state:                     Open state:              │
 │  ┌─────────────────────────┐       ┌──────────────────────┐
 │  │ Choose an option...    ▼│       │ Choose an option... ▼│
 │  └─────────────────────────┘       ├──────────────────────┤
 │                                    │ Option 1             │
 │  Grouped options:                  │ Option 2             │
-│  ┌──────────────────────────────┐ │ Option 3             │
-│  │ Fruits               ▼        │ │ ───────────────────  │
-│  └──────────────────────────────┘ │ Disabled Option      │
-│  ┌──────────────────────────────┐ └──────────────────────┘
-│  │ Vegetables       ▼            │
+│  ┌──────────────────────────────┐  │ Option 3             │
+│  │ Fruits               ▼       │  │ ───────────────────  │
+│  └──────────────────────────────┘  │ Disabled Option      │
+│  ┌──────────────────────────────┐  └──────────────────────┘
+│  │ Vegetables       ▼           │
 │  └──────────────────────────────┘ 
 │                                                             │
 │  With search filtering:                                     │
-│  ┌──────────────────────────────────────────────┐          │
-│  │ search type...                             ▼│          │
-│  │                                            │          │
-│  │ ✓ Filtered Option 1                        │          │
-│  │ ✓ Filtered Option 2                        │          │
-│  │ ✓ Filtered Option 3                        │          │
-│  └──────────────────────────────────────────────┘          │
+│  ┌──────────────────────────────────────────────┐           │
+│  │ search type...                             ▼ │           │
+│  │                                              │           │
+│  │ ✓ Filtered Option 1                          │           │
+│  │ ✓ Filtered Option 2                          │           │
+│  │ ✓ Filtered Option 3                          │           │
+│  └──────────────────────────────────────────────┘           │
 │                                                             │
-│  Features: grouping, search, keyboard nav, disabled        │
+│  Features: grouping, search, keyboard nav, disabled         │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -185,7 +185,7 @@ npx shadcn@latest add button input label textarea checkbox radio-group select sw
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  Off state:              On state:                          │
-│  ◯────               ────◯                                 │
+│  ◯────               ────◯                                │
 │                                                             │
 │  With label:                                                │
 │  Dark Mode       ────◯                                     │
@@ -193,10 +193,10 @@ npx shadcn@latest add button input label textarea checkbox radio-group select sw
 │  Notifications   ◯────                                     │
 │                                                             │
 │  Different sizes:                                           │
-│  sm: ◯──  md: ◯────  lg: ◯──────                           │
+│  sm: ◯──  md: ◯────  lg: ◯──────                         │
 │                                                             │
-│  States: on, off, disabled, loading                        │
-│  Features: smooth transition, keyboard controllable        │
+│  States: on, off, disabled, loading                         │
+│  Features: smooth transition, keyboard controllable         │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -428,7 +428,7 @@ Feedback components inform users of status, result, or required attention regard
 
 **Install command:**
 ```bash
-npx shadcn@latest add alert alert-dialog toast sonner progress skeleton
+npx shadcn@latest add alert alert-dialog sonner progress skeleton
 ```
 
 ---
