@@ -11,6 +11,11 @@ const nextConfig = {
         pathname: "/Shakawat-Sadik/PH-Assignment_07-Keen_Keeper_assets/main/**",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "avatar.vercel.sh",
+        pathname: "**"
+      }
     ],
   },
 };
