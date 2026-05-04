@@ -1,49 +1,82 @@
 import React from "react";
 import friends from "../../public/friends.json";
-import { Card } from "./ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import FriendCardStr from "./FriendCardStr";
 import Image from "next/image";
+import { Badge } from "./ui/badge";
+import { Button } from "./ui/button";
+import { formatDate } from "@/lib/utils";
 
 const FriendPageComponent = ({ path }) => {
-  const num = friends.find((f) => String(f.id) === path.includes(f.id));
-  const friend = friends?.find(fr => fr.id === parseInt(num));
-  console.log(friend);
-  console.log(parseInt(path));
-  const {
-    id,
-    name,
-    picture,
-    email,
-    days_since_contact: days,
-    status,
-    tags,
-    bio,
-    goal,
-    next_due_date: due,
-  } = friend;
+  console.log(path);
+  const num = friends?.find((f) => f?.id === parseInt(path));
+  // const friend = friends?.find(fr => fr.id === parseInt(num));
+  console.log(num);
+  const { id, name, picture, email, days_since_contact: days, status, tags, bio, goal, next_due_date: due } = num;
 
   return (
-    <Card className="grid grid-cols-32 grid-rows-14 py-5 md:py-10 lg:py-20 px-5 sm:px-10 md:px-25 lg:px-40">
-      <Card className="col-span-11 row-span-4">
-        <div className="flex flex-col items-center gap-3 p-6">
-          <FriendCardStr number="One"/>
+    <Card className="max-w-screen max-h-fit grid grid-cols-32 grid-rows-7 py-5 md:py-10 lg:py-20 px-5 sm:px-10 md:px-25 lg:px-40">
+      <Card className="col-span-11 row-span-4 h-fit">
+        <div className="flex flex-col flex-1 items-center gap-3 p-6">
+          <CardContent>
+            <Image loading="eager" src={picture} alt={name} width={100} height={100} className="rounded-full aspect-square" />
+          </CardContent>
+          <CardFooter className="w-full flex-col flex-1 gap-3 rounded-md">
+            <div className="flex-1 flex flex-col items-center gap-2">
+              <CardTitle className="text-xl font-semibold text-center">{name}</CardTitle>
+              <Badge
+                className={`${status === "on-track" ? "flex flex-col items-center bg-green-100 text-green-800 dark:text-green-100 dark:bg-green-800 font-medium" : status === "overdue" ? "flex flex-col items-center bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-100 font-medium" : "flex flex-col items-center bg-amber-500 text-gray-100 dark:bg-amber-700 dark:text-amber-100 font-medium"} w-fit p-1.5 rounded-3xl`}
+              >
+                {status.toUpperCase()}
+              </Badge>
+              <div className="flex justify-center flex-wrap gap-2">
+                {tags.map((t, i) => (
+                  <Badge key={id + t + i} className="text-secondary bg-primary p-2 rounded-3xl whitespace-nowrap">
+                    {t}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+            <CardDescription className="font-italic font-medium leading-4 text-center">&ldquo;{bio}&rdquo;</CardDescription>
+            <CardDescription className="font-italic font-medium leading-4 text-center">Preffered: {email}</CardDescription>
+          </CardFooter>
         </div>
       </Card>
-      <Card className="col-span-7 row-span-2">
-        <FriendCardStr number={"Two"} />
+      <Card className="col-span-7 row-span-2 text-center h-fit">
+        <CardHeader>
+          <CardTitle className="text-[#244D3F] text-3xl">{days < 10 && "0"}{days}</CardTitle>
+        </CardHeader>
+        <CardDescription>Days Since Contact</CardDescription>
       </Card>
-      <Card className="col-span-7 row-span-2">
-        <FriendCardStr number={"Two"} />
+      <Card className="col-span-7 row-span-2 text-center h-fit">
+        <CardHeader>
+          <CardTitle className="text-[#244D3F] text-3xl">{goal < 10 && "0"}{goal}</CardTitle>
+        </CardHeader>
+        <CardDescription>Goal (Days)</CardDescription>
       </Card>
-      <Card className="col-span-7 row-span-2">
-        <FriendCardStr number={"Two"} />
+      <Card className="col-span-7 row-span-2 text-center h-fit">
+        <CardHeader>
+          <CardTitle className="text-[#244D3F] text-3xl">{formatDate(due)}</CardTitle>
+        </CardHeader>
+        <CardDescription>Next Due</CardDescription>
       </Card>
       <Card className="col-span-21 row-span-2">
         <FriendCardStr number={"Three"} />
       </Card>
-      <Card className="col-span-11 row-span-3">
-        <FriendCardStr number={"Four"} />
-      </Card>
+      <div className="col-span-11 row-span-3 w-full h-fit">
+        
+          <div className="flex flex-col gap-2 w-full h-fit py-5">
+            <Button className="font-medium rounded-sm p-4">
+              <span>Snooze 2 weeks</span>
+            </Button>
+            <Button className="font-medium rounded-sm p-4">
+              <span>Archive</span>
+            </Button>
+            <Button className="text-red-700 bg-red-300 font-medium rounded-sm p-4">
+              <span>Delete</span>
+            </Button>
+          </div>
+      </div>
       <Card className="col-span-21 row-span-3">
         <FriendCardStr number={"Five"} />
       </Card>
