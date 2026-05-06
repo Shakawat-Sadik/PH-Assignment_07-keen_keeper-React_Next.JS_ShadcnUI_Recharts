@@ -1,34 +1,43 @@
-import { useEffect, useState } from "react";
+"use client";
+import { createContext, useState } from "react";
 
 // export const [contact, setContact] = useState([]);
 
-export const HandleClick = ({ currentTarget }) => {
-  const [contact, setContact] = useState([]);
+export const ContactHistoryContext = createContext();
+const ContactHistoryProvider = ({ children }) => {
+  const [contactHistory, setContactHistory] = useState({});
 
-  const { id } = currentTarget;
-  const newHandleClick = () => {
-    let feedback = "";
-    switch (id) {
-      case "call":
-        feedback = "Tumar nana call maireseeehhheeey";
-        break;
-      case "text":
-        feedback = "Tumar nana text maireseeehhheeey";
-        break;
-      case "video":
-        feedback = "Tumar nana video maireseeehhheeey";
-        break;
-      default:
-        feedback = "Huputh koira pore giye daat vaingese";
-    }
-    setContact([...contact], feedback)
-  };
-
-  console.log(contact);
-  return contact;
+  const egg = Object.entries(contactHistory)
+  console.log(egg);
+  // console.log(contactHistory);
+  return (
+    <ContactHistoryContext.Provider value={{ contactHistory, setContactHistory }}>
+      {children}
+    </ContactHistoryContext.Provider>
+  );
 };
 
+export default ContactHistoryProvider;
+/*
 
+  let feedback = "";
+  const newHandleClick = () => {
+    switch (id) {
+      case "call":
+        feedback = [[...contact], "Tumar nana call maireseeehhheeey"];
+        break;
+      case "text":
+        feedback = [[...contact], "Tumar nana text maireseeehhheeey"];
+        break;
+      case "video":
+        feedback = [[...contact], "Tumar nana video maireseeehhheeey"];
+        break;
+      default:
+        feedback = [[...contact], "Huputh koira pore giye daat vaingese"];
+    }
+  };
+
+*/
 /*
 export function FuncyFriendEffect({ id }) {
   const [contact, setContact] = useState("");

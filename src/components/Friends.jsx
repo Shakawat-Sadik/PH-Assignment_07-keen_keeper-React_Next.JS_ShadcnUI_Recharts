@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import friends from "../../public/friends.json";
 
 const FriendsPageComponent = () => {

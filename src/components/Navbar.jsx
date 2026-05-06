@@ -1,12 +1,12 @@
-"use client";
+"use client"
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
 } from "./ui/navigation-menu";
 import logo from "../assets/logo.png";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeSwitch from "./ThemeSwitch";
 
@@ -24,28 +24,28 @@ const Navbar = () => {
 
         <NavigationMenuList className="flex gap-4">
           <NavigationMenuItem>
-            <NavigationMenuLink
+            <Link
               href="/"
-              className={`${path === "/" ? "bg-primary text-background hover:text-primary scale-115" : "hover:bg-(--hover-primary) hover:text-foreground"} transition-all duration-300 rounded-xs cursor-pointer`}
+              className={`${path === "/" ? "bg-primary text-background hover:text-(--hover-primary) scale-105" : "hover:bg-(--hover-primary) hover:text-foreground"} inline-flex items-center gap-2 rounded-sm p-2 text-sm font-medium transition-all duration-300 outline-none focus-visible:ring-3 focus-visible:ring-ring/50 cursor-pointer`}
             >
               Home
-            </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink
-              href="/Timeline"
-              className={`${path === "/Timeline" ? "bg-primary text-background hover:text-primary scale-115" : "hover:bg-(--hover-primary) hover:text-foreground"} transition-all duration-300 rounded-xs cursor-pointer`}
+            <Link
+              href="/timeline"
+              className={`${path === "/Timeline" ? "bg-primary text-background hover:text-(--hover-primary) scale-105" : "hover:bg-(--hover-primary) hover:text-foreground"} inline-flex items-center gap-2 rounded-sm p-2 text-sm font-medium transition-all duration-300 outline-none focus-visible:ring-3 focus-visible:ring-ring/50 cursor-pointer`}
             >
               Timeline
-            </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink
+            <Link
               href="/Stats"
-              className={`${path === "/Stats" ? "bg-primary text-background hover:text-primary scale-115" : "hover:bg-(--hover-primary) hover:text-foreground"} transition-all duration-300 rounded-xs cursor-pointer`}
+              className={`${path === "/Stats" ? "bg-primary text-background hover:text-(--hover-primary) scale-105" : "hover:bg-(--hover-primary) hover:text-foreground"} inline-flex items-center gap-2 rounded-sm p-2 text-sm font-medium transition-all duration-300 outline-none focus-visible:ring-3 focus-visible:ring-ring/50 cursor-pointer`}
             >
               Stats
-            </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <ThemeSwitch />
