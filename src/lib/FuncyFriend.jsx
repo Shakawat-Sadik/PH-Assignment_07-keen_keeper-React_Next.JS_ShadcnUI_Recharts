@@ -1,5 +1,6 @@
 "use client";
 import { createContext, useState } from "react";
+import friends from "../../public/friends.json";
 
 // export const [contact, setContact] = useState([]);
 
@@ -8,13 +9,28 @@ const ContactHistoryProvider = ({ children }) => {
   const [contactHistory, setContactHistory] = useState({});
 
   const eggArr = Object.values(contactHistory);
-  (eggArr.map(arr => console.log(arr)));
+  eggArr.map((arr) => console.log(arr));
   // console.log(eggArr)
-  console.log(contactHistory);
+  // console.log(contactHistory);
+
+  const entries = Object.entries(contactHistory).flatMap(([friendId, items]) => {
+    const friend = friends.find((f) => f.id === parseInt(friendId));
+    return items.map(({ type, time, timeMs }, index) => ({
+      friendId,
+      friendName: friend?.name,
+      type: type,
+      time: time,
+      timeMs: timeMs,
+      entryId: timeMs ? `${friendId}-${timeMs}-${index}` : `${friendId}-${time}-${index}`,
+    }));
+  });
+
+  console.log(entries);
+
+  const statSentry = entries.flatMap();
+
   return (
-    <ContactHistoryContext.Provider value={{ contactHistory, setContactHistory }}>
-      {children}
-    </ContactHistoryContext.Provider>
+    <ContactHistoryContext.Provider value={{ contactHistory, setContactHistory }}>{children}</ContactHistoryContext.Provider>
   );
 };
 

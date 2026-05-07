@@ -42,8 +42,8 @@ const FriendPageComponent = ({ path }) => {
   // console.log(z);
 
   return (
-    <Card className="min-w-screen grid grid-cols-11 md:grid-col-12 lg:grid-cols-32 py-5 md:py-10 lg:py-20 px-5 sm:px-10 md:px-25 lg:px-40">
-      <Card className="col-span-11 row-span-2">
+    <Card className="min-w-screen grid grid-cols-1 md:grid-cols-7 lg:grid-cols-32 py-5 md:py-10 lg:py-20 px-5 sm:px-10 md:px-25 lg:px-40">
+      <Card className="md:col-span-4 lg:col-span-11 md:row-span-3 lg:row-span-2">
         <div className="flex flex-col flex-1 items-center p-6">
           <CardContent className="w-full h-full flex flex-1 justify-center bg-linear-180 from-accent to-muted/50 rounded-t-md p-3 pt-6">
             <Image loading="eager" src={picture} alt={name} width={100} height={100} className="rounded-full aspect-square" />
@@ -69,7 +69,7 @@ const FriendPageComponent = ({ path }) => {
           </CardFooter>
         </div>
       </Card>
-      <Card className="col-span-7 row-span-1 justify-center text-center">
+      <Card className="md:col-span-3 lg:col-span-7 md:row-span-1 lg:row-span-1 justify-center text-center">
         <CardHeader>
           <CardTitle className="text-primary text-3xl">
             {days < 10 && "0"}
@@ -78,7 +78,7 @@ const FriendPageComponent = ({ path }) => {
         </CardHeader>
         <CardDescription>Days Since Contact</CardDescription>
       </Card>
-      <Card className="col-span-7 row-span-1 justify-center text-center">
+      <Card className="md:col-span-3 lg:col-span-7 md:row-span-1 lg:row-span-1 justify-center text-center">
         <CardHeader>
           <CardTitle className="text-primary text-3xl">
             {goal < 10 && "0"}
@@ -87,13 +87,13 @@ const FriendPageComponent = ({ path }) => {
         </CardHeader>
         <CardDescription>Goal (Days)</CardDescription>
       </Card>
-      <Card className="col-span-7 row-span-1 justify-center text-center">
+      <Card className="md:col-span-3 lg:col-span-7 md:row-span-1 lg:row-span-1 justify-center text-center">
         <CardHeader>
           <CardTitle className="text-primary text-3xl">{formatDate(due)}</CardTitle>
         </CardHeader>
         <CardDescription>Next Due</CardDescription>
       </Card>
-      <Card className="col-span-21 row-span-1 p-3 md:p-6 items-between justify-center">
+      <Card className="md:col-span-7 lg:col-span-21 lg:row-span-1 p-3 md:p-6 items-between justify-center">
         <div className="flex justify-between">
           <h6 className="text-primary text-xl">Relationship Goal</h6>
           <Button className="p-2">
@@ -104,45 +104,49 @@ const FriendPageComponent = ({ path }) => {
           Connect every <span className="font-bold">30 Days</span>
         </p>
       </Card>
-      <div className="col-span-11 row-span-3 w-full">
-        <div className="flex flex-col gap-2 w-full py-5">
-          <Button className="font-medium rounded-sm p-4">
+      <div className="md:col-span-7 lg:col-span-11 lg:row-span-3 flex items-center justify-center w-full">
+        <div className="flex flex-col gap-2 md:w-fit lg:w-full py-5 items-center justify-center">
+          <Button className="font-medium rounded-sm p-4 w-48">
             <span>Snooze 2 weeks</span>
           </Button>
-          <Button className="font-medium rounded-sm p-4">
+          <Button className="font-medium rounded-sm p-4 w-48">
             <span>Archive</span>
           </Button>
-          <Button className="text-red-700 dark:text-red-300 bg-red-300 dark:bg-red-700 font-medium rounded-sm p-4">
+          <Button className="text-red-700 dark:text-red-300 bg-red-300 dark:bg-red-700 font-medium rounded-sm p-4 w-48">
             <span>Delete</span>
           </Button>
         </div>
       </div>
-      <Card className="col-span-21 p-5">
+      <Card className="md:col-span-7 lg:col-span-21 p-5">
         <h6 className="text-primary text-xl">Quick Check-In</h6>
-        <div className="grid grid-cols-3 h-full gap-4 w-full">
-          <Button id="call" onClick={handleClick} className="flex flex-col-reverse h-full items-center text-xl font-medium rounded-sm p-4">
+        <div className="grid md:grid-cols-1 lg:grid-cols-3 h-full gap-4 w-full">
+          <Button id="call" onClick={handleClick} className="col-span-1 flex flex-col-reverse h-full items-center text-xl font-medium rounded-sm p-4">
             <span>Call</span>
             <span><PhoneCallIcon size={32} className="size-"/></span>
           </Button>
-          <Button id="text" onClick={handleClick} className="flex flex-col-reverse h-full items-center text-xl font-medium rounded-sm p-4">
+          <Button id="text" onClick={handleClick} className="col-span-1 flex flex-col-reverse h-full items-center text-xl font-medium rounded-sm p-4">
             <span>Text</span>
             <span><ChatDotsIcon size={32}  className="size-"/></span>
           </Button>
-          <Button id="video" onClick={handleClick} className="flex flex-col-reverse h-full items-center text-xl font-medium rounded-sm p-4">
+          <Button id="video" onClick={handleClick} className="col-span-1 flex flex-col-reverse h-full items-center text-xl font-medium rounded-sm p-4">
             <span>video</span>
             <span><VideoConferenceIcon size={32}  className="size-"/></span>
           </Button>
         </div>
       </Card>
-      <Card className="col-span-21 row-span-5 p-6">
-        {history.map((entry, i) => (
+      <Card className="md:col-span-7 lg:col-span-21 row-span-5 justify-center h-full p-6">
+        
+        {
+          history.length === 0 ? 
+          <Card key="-1" className="flex flex-col items-center bg-zinc-100 dark:bg-zinc-800"><CardHeader>No activity yet</CardHeader></Card> :
+          history.map((entry, i) => (
           <div key={`${entry.type}-${entry.time}-${i}`} className="flex flex-col items-between justify-center gap-2">
             {cardInside(entry)}
           </div>
         ))}
         {}
       </Card>
-      <div className="col-span-21 row-span-1 p-8"/>
+      <div className="md:col-span-7 lg:col-span-21 row-span-1 p-8"/>
     </Card>
   );
 };

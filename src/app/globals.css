@@ -119,6 +119,9 @@
   --sidebar-ring: oklch(0.56 0.021 213.5);
 }
 
+.logo-shadow {
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

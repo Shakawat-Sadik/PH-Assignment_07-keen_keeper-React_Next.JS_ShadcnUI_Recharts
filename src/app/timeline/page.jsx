@@ -2,28 +2,32 @@
 import { Card } from "@/components/ui/card";
 import { ContactHistoryContext } from "@/lib/FuncyFriend";
 import { Button } from "@base-ui/react";
-import { ArrowFatLineDownIcon, ArrowFatLineUpIcon, CaretDownIcon, ChatsIcon, PhoneCallIcon, VideoConferenceIcon } from "@phosphor-icons/react";
+import {
+  ArrowFatLineDownIcon,
+  ArrowFatLineUpIcon,
+  CaretDownIcon,
+  ChatsIcon,
+  PhoneCallIcon,
+  VideoConferenceIcon,
+} from "@phosphor-icons/react";
 import { useContext, useMemo, useState } from "react";
-import friends from "../../../public/friends.json";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPositioner, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPositioner,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const TimelinePage = () => {
-  const { contactHistory } = useContext(ContactHistoryContext);
+  const { contactHistory, entries } = useContext(ContactHistoryContext);
 
   const [sort, setSort] = useState({ key: "time", direction: "desc" });
   const [typeFilter, setTypeFilter] = useState("all");
-  
-  const entries = Object.entries(contactHistory).flatMap(([friendId, items]) => {
-    const friend = friends.find((f) => f.id === parseInt(friendId));
-    return items.map(({ type, time, timeMs }, index) => ({
-      friendId,
-      friendName: friend?.name,
-      type: type,
-      time: time,
-      timeMs: timeMs,
-      entryId: timeMs ? `${friendId}-${timeMs}-${index}` : `${friendId}-${time}-${index}`,
-    }));
-  });
 
   const sortedEntries = useMemo(() => {
     const filtered = typeFilter === "all" ? entries : entries.filter((entry) => entry.type === typeFilter);
@@ -83,23 +87,60 @@ const TimelinePage = () => {
               <DropdownMenuPositioner className="left-0">
                 <DropdownMenuContent>
                   <DropdownMenuGroup>
-                      <DropdownMenuLabel>Name</DropdownMenuLabel>
-                      <DropdownMenuItem onSelect={handleSort("name", "asc")} onClick={handleSort("name", "asc")}>Ascending <DropdownMenuShortcut><ArrowFatLineUpIcon size={16} /></DropdownMenuShortcut></DropdownMenuItem>
-                      <DropdownMenuItem onSelect={handleSort("name", "desc")} onClick={handleSort("name", "desc")}>Descending <DropdownMenuShortcut><ArrowFatLineDownIcon size={16} /></DropdownMenuShortcut></DropdownMenuItem>
+                    <DropdownMenuLabel>Name</DropdownMenuLabel>
+                    <DropdownMenuItem onSelect={handleSort("name", "asc")} onClick={handleSort("name", "asc")}>
+                      Ascending{" "}
+                      <DropdownMenuShortcut>
+                        <ArrowFatLineUpIcon size={16} />
+                      </DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onSelect={handleSort("name", "desc")} onClick={handleSort("name", "desc")}>
+                      Descending{" "}
+                      <DropdownMenuShortcut>
+                        <ArrowFatLineDownIcon size={16} />
+                      </DropdownMenuShortcut>
+                    </DropdownMenuItem>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
-                    <DropdownMenuGroup>
-                      <DropdownMenuLabel>Contact Type</DropdownMenuLabel>
-                      <DropdownMenuItem onSelect={handleTypeFilter("all")} onClick={handleTypeFilter("all")}>All <DropdownMenuShortcut></DropdownMenuShortcut></DropdownMenuItem>
-                      <DropdownMenuItem onSelect={handleTypeFilter("call")} onClick={handleTypeFilter("call")}>Call <DropdownMenuShortcut><PhoneCallIcon size={16} /></DropdownMenuShortcut> </DropdownMenuItem>
-                      <DropdownMenuItem onSelect={handleTypeFilter("video")} onClick={handleTypeFilter("video")}>Video Call <DropdownMenuShortcut><VideoConferenceIcon size={16} /></DropdownMenuShortcut> </DropdownMenuItem>
-                      <DropdownMenuItem onSelect={handleTypeFilter("text")} onClick={handleTypeFilter("text")}>Text <DropdownMenuShortcut><ChatsIcon size={16} /></DropdownMenuShortcut> </DropdownMenuItem>
-                    </DropdownMenuGroup>
-                    <DropdownMenuSeparator />
                   <DropdownMenuGroup>
-                      <DropdownMenuLabel>Time</DropdownMenuLabel>
-                      <DropdownMenuItem onSelect={handleSort("time", "asc")} onClick={handleSort("time", "asc")}>Ascending <DropdownMenuShortcut><ArrowFatLineUpIcon size={16} /></DropdownMenuShortcut></DropdownMenuItem>
-                      <DropdownMenuItem onSelect={handleSort("time", "desc")} onClick={handleSort("time", "desc")}>Descending <DropdownMenuShortcut><ArrowFatLineDownIcon size={16} /></DropdownMenuShortcut></DropdownMenuItem>
+                    <DropdownMenuLabel>Contact Type</DropdownMenuLabel>
+                    <DropdownMenuItem onSelect={handleTypeFilter("all")} onClick={handleTypeFilter("all")}>
+                      All <DropdownMenuShortcut></DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onSelect={handleTypeFilter("call")} onClick={handleTypeFilter("call")}>
+                      Call{" "}
+                      <DropdownMenuShortcut>
+                        <PhoneCallIcon size={16} />
+                      </DropdownMenuShortcut>{" "}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onSelect={handleTypeFilter("video")} onClick={handleTypeFilter("video")}>
+                      Video Call{" "}
+                      <DropdownMenuShortcut>
+                        <VideoConferenceIcon size={16} />
+                      </DropdownMenuShortcut>{" "}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onSelect={handleTypeFilter("text")} onClick={handleTypeFilter("text")}>
+                      Text{" "}
+                      <DropdownMenuShortcut>
+                        <ChatsIcon size={16} />
+                      </DropdownMenuShortcut>{" "}
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuLabel>Time</DropdownMenuLabel>
+                    <DropdownMenuItem onSelect={handleSort("time", "asc")} onClick={handleSort("time", "asc")}>
+                      Ascending{" "}
+                      <DropdownMenuShortcut>
+                        <ArrowFatLineUpIcon size={16} />
+                      </DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onSelect={handleSort("time", "desc")} onClick={handleSort("time", "desc")}>
+                      Descending{" "}
+                      <DropdownMenuShortcut>
+                        <ArrowFatLineDownIcon size={16} />
+                      </DropdownMenuShortcut>
+                    </DropdownMenuItem>
                   </DropdownMenuGroup>
                 </DropdownMenuContent>
               </DropdownMenuPositioner>
@@ -107,10 +148,7 @@ const TimelinePage = () => {
           </div>
           <Card className="flex flex-col gap-3 p-4">
             {sortedEntries.map((entry) => (
-              <div
-                key={entry.entryId}
-                className="flex items-center justify-between rounded-md border bg-card px-4 py-3"
-              >
+              <div key={entry.entryId} className="flex items-center justify-between rounded-md border bg-card px-4 py-3">
                 <div className="w-full flex flex-col md:flex-row md:items-center justify-between gap-2">
                   <span className="text-base font-medium">
                     {(entry.type === "video" && `Video call with`) ||
