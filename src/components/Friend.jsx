@@ -6,6 +6,7 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { eliteDateFormat, formatDate } from "@/lib/utils";
 import { ContactHistoryContext } from "@/lib/FuncyFriend";
+import { ChatDotsIcon, PhoneCallIcon, VideoConferenceIcon } from "@phosphor-icons/react";
 
 const FriendPageComponent = ({ path }) => {
   const { contactHistory, setContactHistory } = useContext(ContactHistoryContext);
@@ -18,7 +19,7 @@ const FriendPageComponent = ({ path }) => {
   const handleClick = (e) => {
     const fallbackLabel = e?.currentTarget?.innerText?.split("\n")[0] || "";
     const type = (e?.currentTarget?.id || fallbackLabel).toLowerCase();
-    const newEntry = { type, time: eliteDateFormat() };
+    const newEntry = { type, time: eliteDateFormat(), timeMs: Date.now() };
     setContactHistory((prev) => ({
       ...prev,
       [path]: [...(prev[path] || []), newEntry],
@@ -41,7 +42,7 @@ const FriendPageComponent = ({ path }) => {
   // console.log(z);
 
   return (
-    <Card className="max-w-screen grid grid-cols-32 py-5 md:py-10 lg:py-20 px-5 sm:px-10 md:px-25 lg:px-40">
+    <Card className="min-w-screen grid grid-cols-11 md:grid-col-12 lg:grid-cols-32 py-5 md:py-10 lg:py-20 px-5 sm:px-10 md:px-25 lg:px-40">
       <Card className="col-span-11 row-span-2">
         <div className="flex flex-col flex-1 items-center p-6">
           <CardContent className="w-full h-full flex flex-1 justify-center bg-linear-180 from-accent to-muted/50 rounded-t-md p-3 pt-6">
@@ -64,11 +65,11 @@ const FriendPageComponent = ({ path }) => {
               </div>
             </div>
             <CardDescription className="font-italic font-medium leading-4 text-center">&ldquo;{bio}&rdquo;</CardDescription>
-            <CardDescription className="font-italic font-medium leading-4 text-center">Preffered: {email}</CardDescription>
+            <CardDescription className="font-italic font-medium leading-4 text-center">Preferred: {email}</CardDescription>
           </CardFooter>
         </div>
       </Card>
-      <Card className="col-span-7 row-span-1 text-center">
+      <Card className="col-span-7 row-span-1 justify-center text-center">
         <CardHeader>
           <CardTitle className="text-primary text-3xl">
             {days < 10 && "0"}
@@ -77,7 +78,7 @@ const FriendPageComponent = ({ path }) => {
         </CardHeader>
         <CardDescription>Days Since Contact</CardDescription>
       </Card>
-      <Card className="col-span-7 row-span-1 text-center">
+      <Card className="col-span-7 row-span-1 justify-center text-center">
         <CardHeader>
           <CardTitle className="text-primary text-3xl">
             {goal < 10 && "0"}
@@ -86,7 +87,7 @@ const FriendPageComponent = ({ path }) => {
         </CardHeader>
         <CardDescription>Goal (Days)</CardDescription>
       </Card>
-      <Card className="col-span-7 row-span-1 text-center">
+      <Card className="col-span-7 row-span-1 justify-center text-center">
         <CardHeader>
           <CardTitle className="text-primary text-3xl">{formatDate(due)}</CardTitle>
         </CardHeader>
@@ -119,17 +120,17 @@ const FriendPageComponent = ({ path }) => {
       <Card className="col-span-21 p-5">
         <h6 className="text-primary text-xl">Quick Check-In</h6>
         <div className="grid grid-cols-3 h-full gap-4 w-full">
-          <Button id="call" onClick={handleClick} className="flex flex-col h-full items-center font-medium rounded-sm p-4">
+          <Button id="call" onClick={handleClick} className="flex flex-col-reverse h-full items-center text-xl font-medium rounded-sm p-4">
             <span>Call</span>
-            <span>Call</span>
+            <span><PhoneCallIcon size={32} className="size-"/></span>
           </Button>
-          <Button id="text" onClick={handleClick} className="flex flex-col h-full items-center font-medium rounded-sm p-4">
+          <Button id="text" onClick={handleClick} className="flex flex-col-reverse h-full items-center text-xl font-medium rounded-sm p-4">
             <span>Text</span>
-            <span>Text</span>
+            <span><ChatDotsIcon size={32}  className="size-"/></span>
           </Button>
-          <Button id="video" onClick={handleClick} className="flex flex-col h-full items-center font-medium rounded-sm p-4">
+          <Button id="video" onClick={handleClick} className="flex flex-col-reverse h-full items-center text-xl font-medium rounded-sm p-4">
             <span>video</span>
-            <span>video</span>
+            <span><VideoConferenceIcon size={32}  className="size-"/></span>
           </Button>
         </div>
       </Card>
@@ -141,6 +142,7 @@ const FriendPageComponent = ({ path }) => {
         ))}
         {}
       </Card>
+      <div className="col-span-21 row-span-1 p-8"/>
     </Card>
   );
 };

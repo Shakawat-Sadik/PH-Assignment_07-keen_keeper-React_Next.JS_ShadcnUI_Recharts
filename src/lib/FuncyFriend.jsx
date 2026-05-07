@@ -7,9 +7,10 @@ export const ContactHistoryContext = createContext();
 const ContactHistoryProvider = ({ children }) => {
   const [contactHistory, setContactHistory] = useState({});
 
-  const egg = Object.entries(contactHistory)
-  console.log(egg);
-  // console.log(contactHistory);
+  const eggArr = Object.values(contactHistory);
+  (eggArr.map(arr => console.log(arr)));
+  // console.log(eggArr)
+  console.log(contactHistory);
   return (
     <ContactHistoryContext.Provider value={{ contactHistory, setContactHistory }}>
       {children}
