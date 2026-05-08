@@ -105,6 +105,10 @@ Friend data is stored in `public/friends.json`. Each friend contains:
 
 The project is deployed with Vercel.
 
+**Live Link:** https://ph-assignment-07-keen-keeper-react.vercel.app
+
+**GitHub Repository Link:** Add your repository URL here
+
 ## 📄 License
 
 This project is for educational purposes.

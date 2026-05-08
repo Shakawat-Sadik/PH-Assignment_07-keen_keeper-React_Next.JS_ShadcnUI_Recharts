@@ -27,7 +27,7 @@ const StatsPage = () => {
   return (
     <div className="flex flex-col flex-1 w-full max-w-3xl self-center px-4 py-8 lg:px-0">
       <div className="flex items-center justify-center">
-        <h2 className="text-3xl font-semibold">Interaction Breakdown</h2>
+        <h2 className="text-3xl font-semibold">Friendship Analytics</h2>
       </div>
       {!hasData ? (
         <div className="flex items-center justify-center mt-6 h-80 text-muted-foreground">
