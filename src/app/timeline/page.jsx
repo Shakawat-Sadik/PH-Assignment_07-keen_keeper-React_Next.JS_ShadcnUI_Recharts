@@ -11,6 +11,7 @@ import {
   VideoConferenceIcon,
 } from "@phosphor-icons/react";
 import { useContext, useMemo, useState } from "react";
+import friends from "../../../public/friends.json";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,10 +25,22 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const TimelinePage = () => {
-  const { contactHistory, entries } = useContext(ContactHistoryContext);
+  const { contactHistory } = useContext(ContactHistoryContext);
 
   const [sort, setSort] = useState({ key: "time", direction: "desc" });
   const [typeFilter, setTypeFilter] = useState("all");
+
+  const entries = Object.entries(contactHistory).flatMap(([friendId, items]) => {
+    const friend = friends.find((f) => f.id === parseInt(friendId));
+    return items.map(({ type, time, timeMs }, index) => ({
+      friendId,
+      friendName: friend?.name,
+      type: type,
+      time: time,
+      timeMs: timeMs,
+      entryId: timeMs ? `${friendId}-${timeMs}-${index}` : `${friendId}-${time}-${index}`,
+    }));
+  });
 
   const sortedEntries = useMemo(() => {
     const filtered = typeFilter === "all" ? entries : entries.filter((entry) => entry.type === typeFilter);

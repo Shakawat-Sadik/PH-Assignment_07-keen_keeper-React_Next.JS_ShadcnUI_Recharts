@@ -1,24 +1,32 @@
 "use client";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { ContactHistoryContext } from "../lib/FuncyFriend";
 
 const UseStats = () => {
-  const { entries } = useContext(ContactHistoryContext);
+  const { contactHistory } = useContext(ContactHistoryContext);
 
-  console.log(entries);
+  const contactStats = useMemo(() => {
+    const counts = { call: 0, text: 0, video: 0 };
 
-  const call = entries.filter(({ type }) => type === "call");
-  const video = entries.filter(({ type }) => type === "video");
-  const text = entries.filter(({ type }) => type === "text");
+    // console.log(contactHistory);
+    // console.log(Object.values(contactHistory));
+    
+      Object.values(contactHistory)
+        .flatMap((items) => items)
+      .reduce((acc, { type }) => {
+        if (type in acc) {
+          acc[type] += 1;
+        }
+        return acc;
+      }, counts);
 
-  const statsByContact = [
-    { type: "call", value: call.length, fill: "var(--chart-1)" },
-    { type: "text", value: text.length, fill: "var(--chart-3)" },
-    { type: "video", value: video.length, fill: "var(--chart-5)" },
-  ];
-  //   console.log(nameStats);
+    return [
+        { type: "call", name: "Call", value: counts.call, fill: "var(--chart-1)" },
+        { type: "text", name: "Text", value: counts.text, fill: "var(--chart-3)" },
+        { type: "video", name: "Video", value: counts.video, fill: "var(--chart-5)" },
+    ];
+  }, [contactHistory]);
 
-  const statsByName = 0;
   return { contactStats };
 };
 

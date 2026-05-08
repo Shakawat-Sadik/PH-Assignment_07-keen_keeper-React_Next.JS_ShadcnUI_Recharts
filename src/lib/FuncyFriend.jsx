@@ -9,9 +9,6 @@ const ContactHistoryProvider = ({ children }) => {
   const [contactHistory, setContactHistory] = useState({});
 
   const eggArr = Object.values(contactHistory);
-  eggArr.map((arr) => console.log(arr));
-  // console.log(eggArr)
-  console.log(contactHistory);
 
   const entries = Object.entries(contactHistory).flatMap(([friendId, items]) => {
     const friend = friends.find((f) => f.id === parseInt(friendId));
@@ -25,9 +22,9 @@ const ContactHistoryProvider = ({ children }) => {
     }));
   });
 
-  // console.log(entries);
+  console.log(contactHistory);
   return (
-    <ContactHistoryContext.Provider value={{ contactHistory, setContactHistory, entries }}>{children}</ContactHistoryContext.Provider>
+    <ContactHistoryContext.Provider value={{ contactHistory, setContactHistory}}>{children}</ContactHistoryContext.Provider>
   );
 };
 
