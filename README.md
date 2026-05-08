@@ -1,45 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 👥 KeenKeeper — Keep Your Friendships Alive
 
-# Keen Keeper
-A social app to help you stay connected with your friends and loved ones.
+KeenKeeper is a friendship management app built with Next.js, React, Tailwind CSS, shadcn/ui, and Recharts. It helps users track friends, view relationship stats, log interactions, and stay on top of important connections.
 
-##Tech Stack
+## ✨ Features
 
-- Next.js (Pages Router)
-  - React.js
-- Tailwind CSS
-  - shadcn/ui (preset b2oFIHsGG)
-- Recharts
-- Netlify (Deployment)
+- **Responsive home page** with a hero banner, summary cards, and friend grid
+- **Friend detail pages** with profile info, status badges, tags, bio, and quick actions
+- **Interaction timeline** that records call, text, and video check-ins
+- **Timeline filters** to sort interactions by type
+- **Friendship analytics** with charts built using Recharts
+- **Toast notifications** for quick interaction feedback
+- **404 and loading states** for a smoother user experience
+- **Fully responsive UI** for mobile, tablet, and desktop
 
-## Getting Started
+## 🛠️ Tech Stack
 
-First, run the development server:
+- **Next.js** — App Router and routing structure
+- **React** — Component-based UI
+- **Tailwind CSS** — Styling and responsive layout
+- **shadcn/ui** — Reusable UI components
+- **Recharts** — Analytics visualizations
+- **Sonner** — Toast notifications
+- **Vercel** — Deployment platform
+
+## 📁 Project Structure
+
+```text
+src/
+├── app/
+│   ├── page.js
+│   ├── [Friend]/page.jsx
+│   ├── timeline/page.jsx
+│   ├── stats/page.jsx
+│   ├── loading.jsx
+│   └── not-found.jsx
+├── components/
+│   ├── Navbar.jsx
+│   ├── Footer.jsx
+│   ├── Friend.jsx
+│   └── ui/
+└── lib/
+    └── utils.js
+public/
+└── friends.json
+```
+
+## 🚀 Getting Started
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run the development server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Build for production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+### Start the production server
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📊 Data Format
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Friend data is stored in `public/friends.json`. Each friend contains:
 
-## Deploy on Vercel
+- `id`
+- `name`
+- `picture`
+- `email`
+- `days_since_contact`
+- `status`
+- `tags`
+- `bio`
+- `goal`
+- `next_due_date`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ✅ Assignment Coverage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Navbar with active navigation states
+- Home page banner and summary cards
+- Friend cards and detail pages
+- Timeline page with filters
+- Analytics page with Recharts pie chart
+- Footer section
+- 404 page
+- Loading UI
+- Toast notifications
+- Responsive design across screen sizes
+
+## 🚢 Deployment
+
+The project is deployed with Vercel.
+
+## 📄 License
+
+This project is for educational purposes.
 
 
 

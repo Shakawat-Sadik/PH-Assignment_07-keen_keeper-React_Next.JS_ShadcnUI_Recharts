@@ -93,7 +93,7 @@
   --popover-foreground: oklch(0.987 0.002 197.1);
   --primary: rgb(100, 192, 15); /*oklch(0.448 0.119 151.328);*/
   --hover-primary: oklch(0.448 0.119 151.328);
-  --primary-foreground: oklch(28.296% 0.02033 175.363);
+  --primary-foreground: oklch(21.498% 0.03808 170.962);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.275 0.011 216.9);

@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/Theme";
 import Footer from "../components/Footer";
 import ContactHistoryProvider from "@/lib/FuncyFriend";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
             <Footer />
           </ContactHistoryProvider>
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );

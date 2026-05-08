@@ -6,7 +6,8 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { eliteDateFormat, formatDate } from "@/lib/utils";
 import { ContactHistoryContext } from "@/lib/FuncyFriend";
-import { ChatDotsIcon, PhoneCallIcon, VideoConferenceIcon } from "@phosphor-icons/react";
+import { ChatDotsIcon, PhoneCallIcon, TrashIcon, VideoConferenceIcon } from "@phosphor-icons/react";
+import { toast } from "sonner";
 
 const FriendPageComponent = ({ path }) => {
   const { contactHistory, setContactHistory } = useContext(ContactHistoryContext);
@@ -16,6 +17,13 @@ const FriendPageComponent = ({ path }) => {
   const { id, name, picture, email, days_since_contact: days, status, tags, bio, goal, next_due_date: due } = num;
   const history = contactHistory[path] || [];
 
+  const sonnerFunctionality = {
+    description: eliteDateFormat(),
+    action: {
+      label: <TrashIcon size={16} />,
+      onClick: () => {},
+    },
+  };
   const handleClick = (e) => {
     const fallbackLabel = e?.currentTarget?.innerText?.split("\n")[0] || "";
     const type = (e?.currentTarget?.id || fallbackLabel).toLowerCase();
@@ -24,16 +32,22 @@ const FriendPageComponent = ({ path }) => {
       ...prev,
       [path]: [...(prev[path] || []), newEntry],
     }));
+    (type === "call" &&
+      toast.success(`You called ${name}`, sonnerFunctionality)) ||
+      (type === "text" &&
+        toast.success(`You texted ${name}`, sonnerFunctionality)) ||
+      (type === "video" &&
+        toast.success(`You video called ${name}`, sonnerFunctionality));
   };
 
-  const cardInside = (entry) => (
+  const cardInside = ({ type, time }) => (
     <Card className="flex flex-row justify-between p-6">
       <div className="bg-card">
-        {(entry.type === "call" && `You called ${name}`) ||
-          (entry.type === "text" && `You texted ${name}`) ||
-          (entry.type === "video" && `You video called ${name}`)}
+        {(type === "call" && `You called ${name}`) ||
+          (type === "text" && `You texted ${name}`) ||
+          (type === "video" && `You video called ${name}`)}
       </div>
-      <p>{entry.time}</p>
+      <p>{time}</p>
     </Card>
   );
   // const x = {a: 1, b: 2, c: 3, d: 4, e: 5};
@@ -120,33 +134,53 @@ const FriendPageComponent = ({ path }) => {
       <Card className="md:col-span-7 lg:col-span-21 p-5">
         <h6 className="text-primary text-xl">Quick Check-In</h6>
         <div className="grid md:grid-cols-1 lg:grid-cols-3 h-full gap-4 w-full">
-          <Button id="call" onClick={handleClick} className="col-span-1 flex flex-col-reverse h-full items-center text-xl font-medium rounded-sm p-4">
+          <Button
+            id="call"
+            onClick={handleClick}
+            className="col-span-1 flex flex-col-reverse h-full items-center text-xl font-medium rounded-sm p-4"
+          >
             <span>Call</span>
-            <span><PhoneCallIcon size={32} className="size-"/></span>
+            <span>
+              <PhoneCallIcon size={32} className="size-" />
+            </span>
           </Button>
-          <Button id="text" onClick={handleClick} className="col-span-1 flex flex-col-reverse h-full items-center text-xl font-medium rounded-sm p-4">
+          <Button
+            id="text"
+            onClick={handleClick}
+            className="col-span-1 flex flex-col-reverse h-full items-center text-xl font-medium rounded-sm p-4"
+          >
             <span>Text</span>
-            <span><ChatDotsIcon size={32}  className="size-"/></span>
+            <span>
+              <ChatDotsIcon size={32} className="size-" />
+            </span>
           </Button>
-          <Button id="video" onClick={handleClick} className="col-span-1 flex flex-col-reverse h-full items-center text-xl font-medium rounded-sm p-4">
+          <Button
+            id="video"
+            onClick={handleClick}
+            className="col-span-1 flex flex-col-reverse h-full items-center text-xl font-medium rounded-sm p-4"
+          >
             <span>video</span>
-            <span><VideoConferenceIcon size={32}  className="size-"/></span>
+            <span>
+              <VideoConferenceIcon size={32} className="size-" />
+            </span>
           </Button>
         </div>
       </Card>
       <Card className="md:col-span-7 lg:col-span-21 row-span-5 justify-center h-full p-6">
-        
-        {
-          history.length === 0 ? 
-          <Card key="-1" className="flex flex-col items-center bg-zinc-100 dark:bg-zinc-800"><CardHeader>No activity yet</CardHeader></Card> :
+        {history.length === 0 ? (
+          <Card key="-1" className="flex flex-col items-center bg-zinc-100 dark:bg-zinc-800">
+            <CardHeader>No activity yet</CardHeader>
+          </Card>
+        ) : (
           history.map((entry, i) => (
-          <div key={`${entry.type}-${entry.time}-${i}`} className="flex flex-col items-between justify-center gap-2">
-            {cardInside(entry)}
-          </div>
-        ))}
+            <div key={`${entry.type}-${entry.time}-${i}`} className="flex flex-col items-between justify-center gap-2">
+              {cardInside(entry)}
+            </div>
+          ))
+        )}
         {}
       </Card>
-      <div className="md:col-span-7 lg:col-span-21 row-span-1 p-8"/>
+      <div className="md:col-span-7 lg:col-span-21 row-span-1 p-8" />
     </Card>
   );
 };
