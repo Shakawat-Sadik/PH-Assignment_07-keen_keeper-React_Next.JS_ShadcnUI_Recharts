@@ -19,7 +19,7 @@ const FriendPageComponent = ({ path }) => {
   const handleClick = (e) => {
     const fallbackLabel = e?.currentTarget?.innerText?.split("\n")[0] || "";
     const type = (e?.currentTarget?.id || fallbackLabel).toLowerCase();
-    const newEntry = { type, time: eliteDateFormat(), timeMs: Date.now() };
+    const newEntry = { type, time: eliteDateFormat(), timeMs: Date.now() }; //`type` is the shorthand of `type: type`
     setContactHistory((prev) => ({
       ...prev,
       [path]: [...(prev[path] || []), newEntry],

@@ -19,7 +19,7 @@ const Navbar = () => {
       <NavigationMenu className="flex justify-between">
         <NavigationMenuList>
           <NavigationMenuItem>
-                 <Image loading="eager" src={logo} alt="Logo" width={200} height={80} className="dark:drop-shadow-[0rem_0_0.1rem_#fff]"/>
+                 <Image loading="eager" src={logo} alt="Logo" width={200} height={80} className="w-auto h-auto dark:drop-shadow-[0rem_0_0.1rem_#fff]"/>
           </NavigationMenuItem>
         </NavigationMenuList>
 
@@ -36,7 +36,7 @@ const Navbar = () => {
           <NavigationMenuItem>
             <Link
               href="/timeline"
-              className={`${path === "/Timeline" ? "bg-primary text-background hover:text-(--hover-primary) scale-105" : "hover:bg-(--hover-primary) hover:text-foreground"} inline-flex items-center gap-2 rounded-sm p-2 font-medium transition-all duration-300 outline-none focus-visible:ring-3 focus-visible:ring-ring/50 cursor-pointer`}
+              className={`${path === "/timeline" ? "bg-primary text-background hover:text-(--hover-primary) scale-105" : "hover:bg-(--hover-primary) hover:text-foreground"} inline-flex items-center gap-2 rounded-sm p-2 font-medium transition-all duration-300 outline-none focus-visible:ring-3 focus-visible:ring-ring/50 cursor-pointer`}
             >
             <ClockClockwiseIcon size={16} />
               Timeline
@@ -44,8 +44,8 @@ const Navbar = () => {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Link
-              href="/Stats"
-              className={`${path === "/Stats" ? "bg-primary text-background hover:text-(--hover-primary) scale-105" : "hover:bg-(--hover-primary) hover:text-foreground"} inline-flex items-center gap-2 rounded-sm p-2 font-medium transition-all duration-300 outline-none focus-visible:ring-3 focus-visible:ring-ring/50 cursor-pointer`}
+              href="/stats"
+              className={`${path === "/stats" ? "bg-primary text-background hover:text-(--hover-primary) scale-105" : "hover:bg-(--hover-primary) hover:text-foreground"} inline-flex items-center gap-2 rounded-sm p-2 font-medium transition-all duration-300 outline-none focus-visible:ring-3 focus-visible:ring-ring/50 cursor-pointer`}
             >
             <ChartDonutIcon size={16} />
               Stats

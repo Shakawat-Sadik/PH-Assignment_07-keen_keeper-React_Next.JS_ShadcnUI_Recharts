@@ -1,11 +1,16 @@
-import React from 'react';
+"use client";
+import { Card } from "@/components/ui/card";
+import UseStats from "@/hooks/stats";
 
 const StatsPage = () => {
-    return (
-        <div>
-            {}
-        </div>
-    );
+    const { contactStats } = UseStats();
+      console.log(contactStats);
+
+  return (
+    <div>
+      <Card>x</Card>
+    </div>
+  );
 };
 
 export default StatsPage;

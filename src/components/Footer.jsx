@@ -11,7 +11,7 @@ const Footer = () => {
                 alt="Footer Logo"
                 width={400}
                 height={300}
-                className="w-100 h-auto mb-8"
+                className="w-auto h-auto mb-8"
             />
             <p className="text-center leading-6 lg:text-xl opacity-80">Your personal shelf of meaningful connections. Browse, tend, and nurture the relationships that matter most.</p>
             <h6 className="text-2xl py-4">Social Links</h6>
