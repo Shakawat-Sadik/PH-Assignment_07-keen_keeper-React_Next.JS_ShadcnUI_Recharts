@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-[70vh] w-full items-center justify-center px-4 py-16">
+    <main className="flex flex-1 h-full w-full items-center justify-center px-4 py-16">
       <div className="mx-auto flex max-w-xl flex-col items-center gap-4 text-center">
         <p className="text-sm font-medium uppercase tracking-[0.3em] text-muted-foreground">
           404
