@@ -1,11 +1,10 @@
 "use client";
-import { Card } from "@/components/ui/card";
-import { ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import UseStats from "@/hooks/stats";
+import { ChartContainer, ChartLegend, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import useStats from "@/hooks/stats";
 import { Pie, PieChart } from "recharts";
 
 const StatsPage = () => {
-    const { contactStats } = UseStats();
+    const { contactStats } = useStats();
 
     const chartConfig = {
       call: {

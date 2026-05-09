@@ -24,7 +24,9 @@ const ContactHistoryProvider = ({ children }) => {
 
   console.log(contactHistory);
   return (
-    <ContactHistoryContext.Provider value={{ contactHistory, setContactHistory}}>{children}</ContactHistoryContext.Provider>
+    <ContactHistoryContext.Provider value={{ contactHistory, setContactHistory }}>
+      {children}
+    </ContactHistoryContext.Provider>
   );
 };
 

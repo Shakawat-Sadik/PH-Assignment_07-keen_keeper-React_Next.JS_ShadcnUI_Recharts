@@ -1,7 +1,6 @@
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -33,13 +32,9 @@ const FriendsPageComponent = () => {
             id,
             name,
             picture,
-            email,
             days_since_contact,
             status,
             tags,
-            bio,
-            goal,
-            next_due_date,
           }) => (
             <Link href={`/friends/${id}`} className="w-full" key={id}>
               <Card

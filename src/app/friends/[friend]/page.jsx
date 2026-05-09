@@ -1,14 +1,10 @@
-"use client";
-import React, { useState } from "react";
 import FriendPageComponent from "../../../components/Friend";
-import { useParams } from "next/navigation";
 
-const FriendPage = ({ params }) => {
-  const { friend: path } = useParams();
+const FriendPage = async ({ params }) => {
+  const { friend: path } = await params;
 
   return (
     <div className="">
-
       <FriendPageComponent path={path} />
     </div>
   );

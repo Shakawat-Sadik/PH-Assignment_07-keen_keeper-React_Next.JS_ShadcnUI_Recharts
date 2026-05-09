@@ -1,7 +1,7 @@
 "use client";
 import { Card } from "@/components/ui/card";
 import { ContactHistoryContext } from "@/lib/FuncyFriend";
-import { Button } from "@base-ui/react";
+import { Button } from "@/components/ui/button";
 import {
   ArrowFatLineDownIcon,
   ArrowFatLineUpIcon,

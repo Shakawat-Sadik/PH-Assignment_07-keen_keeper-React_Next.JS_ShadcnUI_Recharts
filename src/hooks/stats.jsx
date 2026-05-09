@@ -2,7 +2,7 @@
 import { useContext, useMemo } from "react";
 import { ContactHistoryContext } from "../lib/FuncyFriend";
 
-const UseStats = () => {
+const useStats = () => {
   const { contactHistory } = useContext(ContactHistoryContext);
 
   const contactStats = useMemo(() => {
@@ -30,4 +30,4 @@ const UseStats = () => {
   return { contactStats };
 };
 
-export default UseStats;
+export default useStats;

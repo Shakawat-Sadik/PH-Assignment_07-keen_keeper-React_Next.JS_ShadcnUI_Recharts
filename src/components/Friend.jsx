@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useContext } from "react";
 import friends from "../../public/friends.json";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
@@ -13,8 +15,14 @@ const FriendPageComponent = ({ path }) => {
   const { contactHistory, setContactHistory } = useContext(ContactHistoryContext);
 
   const num = friends?.find((f) => f?.id === parseInt(path));
-
-  const { id, name, picture, email, days_since_contact: days, status, tags, bio, goal, next_due_date: due } = num;
+  if (!num) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh] w-full">
+        <p className="text-lg text-muted-foreground">Wrong Address, Wrong Amigos</p>
+      </div>
+    );
+  }
+  const { id, name, picture, email, days_since_contact: days, status, tags, bio, goal, next_due_date: due } = num ?? {};
   const history = contactHistory[path] || [];
 
   const sonnerFunctionality = {

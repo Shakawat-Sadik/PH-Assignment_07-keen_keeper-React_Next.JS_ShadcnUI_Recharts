@@ -107,7 +107,7 @@ The project is deployed with Vercel.
 
 **Live Link:** https://ph-assignment-07-keen-keeper-react.vercel.app
 
-**GitHub Repository Link:** Add your repository URL here
+**GitHub Repository Link:** https://github.com/Shakawat-Sadik/PH-Assignment_07-Keen_Keeper
 
 ## 📄 License
 
