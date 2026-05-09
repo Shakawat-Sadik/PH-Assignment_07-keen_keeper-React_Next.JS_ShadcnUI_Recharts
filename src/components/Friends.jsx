@@ -10,8 +10,6 @@ import friends from "../../public/friends.json";
 
 const FriendsPageComponent = () => {
 
-  console.log(friends);
-
   const onTrack = friends.filter((friend) => friend.status === "on-track");
 
   const needAttention = friends.filter(

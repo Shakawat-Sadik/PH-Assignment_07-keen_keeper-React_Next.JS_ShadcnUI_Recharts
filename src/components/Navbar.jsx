@@ -13,7 +13,7 @@ import { ChartDonutIcon, ClockAfternoonIcon, ClockClockwiseIcon, HouseLineIcon, 
 
 const Navbar = () => {
   const path = usePathname();
-  // console.log(typeof(path));
+  
   return (
     <div className="sticky top-0 z-40 bg-background/70 flex flex-row w-full">
       <NavigationMenu className="flex justify-between">

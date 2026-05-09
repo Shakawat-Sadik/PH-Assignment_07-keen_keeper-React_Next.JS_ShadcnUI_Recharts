@@ -58,10 +58,6 @@ const FriendPageComponent = ({ path }) => {
       <p>{time}</p>
     </Card>
   );
-  // const x = {a: 1, b: 2, c: 3, d: 4, e: 5};
-  // const y = {f: 15};
-  // const z = {...x, ...y};
-  // console.log(z);
 
   return (
     <Card className="min-w-screen grid grid-cols-1 md:grid-cols-7 lg:grid-cols-32 py-5 md:py-10 lg:py-20 px-5 sm:px-10 md:px-25 lg:px-40">

@@ -1,6 +1,5 @@
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -22,12 +21,6 @@ export default function Home() {
   const interactionsThisMonth = xFriends.filter(
     (friend) => friend.days_since_contact < time.getDate(),
   );
-
-
-  // const cacheBustUrl = (url) => {
-  //   const version = Math.floor(Date.now() / 60000); // Refreshes every minute
-  //   return `${url}${url.includes("?") ? "&" : "?"}cache=${version}`;
-  // };
 
   return (
     <main className="flex flex-1 w-full flex-col">
@@ -86,16 +79,3 @@ export default function Home() {
     </main>
   );
 }
-
-/*
-const now = new Date();
-
-const year = now.getFullYear();   // e.g., 2026
-const month = now.getMonth();     // 0-11 (January is 0)
-const date = now.getDate();       // 1-31
-const day = now.getDay();         // 0-6 (Sunday is 0)
-const hour = now.getHours();      // 0-23
-const minute = now.getMinutes();  // 0-59
-const second = now.getSeconds();  // 0-59
-const ms = now.getMilliseconds(); // 0-999
-*/
