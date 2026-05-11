@@ -19,7 +19,7 @@ const Navbar = () => {
       <NavigationMenu className="flex justify-between">
         <NavigationMenuList>
           <NavigationMenuItem>
-                 <Image loading="eager" src={logo} alt="Logo" width={200} height={80} className="w-auto h-auto dark:drop-shadow-[0rem_0_0.1rem_#fff]"/>
+                 <Image loading="eager" src={logo} alt="Logo" width={200} height={80} className="w-auto h-auto dark:drop-shadow-[0rem_0_0.1rem_#fff] shrink-0"/>
           </NavigationMenuItem>
         </NavigationMenuList>
 
