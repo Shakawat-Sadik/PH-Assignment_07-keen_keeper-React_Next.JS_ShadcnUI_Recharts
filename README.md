@@ -48,12 +48,14 @@ public/
 
 ## Routes
 
+```
 ┌ ○ /
 ├ ○ /_not-found
 ├ ○ /friends
 ├ ƒ /friends/[friend]
 ├ ○ /stats
 └ ○ /timeline
+```
 
 ○  (Static)   pre rendered as static content
 ƒ  (Dynamic)  server-rendered on demand
